@@ -4,10 +4,13 @@
     <title>Screencaster</title>
     <%= csrf_meta_tags %>
     <link href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet" type="text/css">
+    <link href="//vjs.zencdn.net/5.4.6/video-js.min.css" rel="stylesheet">
+    <script src="//vjs.zencdn.net/5.4.6/video.min.js"></script>
     <%= stylesheet_link_tag    'application', media: 'all' %>
   </head>
 
   <body>
+
     <%= yield %>
     <%= javascript_include_tag 'application' %>
   </body>

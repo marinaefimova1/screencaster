@@ -9,7 +9,7 @@ default: &default
 
 development:
   <<: *default
-  database: screencaster_development
+  database: screencaster_developer
 
 test: &test
   <<: *default

@@ -139,17 +139,20 @@ function stopRecording() {
 
 function download() {
     var blob = new Blob(recordedBlobs, {type: 'video/webm'});
-    var url = window.URL.createObjectURL(blob);
-    var a = document.createElement('a');
-    a.style.display = 'none';
-    a.href = url;
-    a.download = 'test.webm';
-    document.body.appendChild(a);
-    a.click();
-    setTimeout(function () {
-        document.body.removeChild(a);
-        window.URL.revokeObjectURL(url);
-    }, 100);
+    var fd = new FormData();
+    fd.append('data', blob);
+    $.ajax({
+        url: 'welcome/upload',
+        method: 'POST',
+        data: fd,
+        processData: false,
+        contentType: false
+    }).done(function (data) {
+        console.log(data);
+        var container = document.getElementById('link');
+        container.innerHTML = '<div><b><a href="' + window.location.origin + '/' + data.hash_url +'">Get your video by link ' + window.location.origin + '/' + data.hash_url + '</a></b></div>';
+    });
+
 }
 
 function toggleFullScreen() {
@@ -192,33 +195,3 @@ $(window).on('mousemove', function () {
     }, 2000);
 
 });
-
-window.onload = function onLoad() {
-    var bar = new ProgressBar.Circle('#container', {
-        color: '#008000',
-        strokeWidth: 10,
-        trailWidth: 5,
-        easing: 'easeInOut',
-        duration: 5000,
-        text: {
-            autoStyleContainer: false
-        },
-        from: { color: '#ff0000', width: 5 },
-        to: { color: '#008000', width: 10 },
-        step: function(state, circle) {
-            circle.path.setAttribute('stroke', state.color);
-            circle.path.setAttribute('stroke-width', state.width);
-
-            var value = Math.round(circle.value() * 5);
-            if (value === 0) {
-                circle.setText('1');
-            } else {
-                circle.setText(value);
-            }
-
-        }
-    });
-    bar.text.style.fontSize = '100px';
-
-    bar.animate(1.0);  // Number from 0.0 to 1.0
-};

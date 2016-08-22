@@ -63,3 +63,26 @@ body {
   height: 200px;
   position: relative;
 }
+.video {
+  width: 100%;
+  position: relative;
+  padding-top: 56.25%;
+}
+.video iframe, .video object, .video embed{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+#link {
+  bottom: 77px;
+  left: 6vw;
+  position: absolute;
+  &.active {
+    svg, button {
+      transform: translateX(0);
+    }
+  }
+}
