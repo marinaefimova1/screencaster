@@ -29,6 +29,7 @@ Rails.application.config.assets.version = '1.0'
 
 Aws.config.update({region: 'us-west-2',credentials: Aws::Credentials.new('AKIAIZX5YLILX5Q2LOZA', 'gFf47f0ls+YHvNHIjJ5J4TyhNKZQb5gaqfp+vM09')})
 
+
 # Precompile additional assets.
 # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
 # Rails.application.config.assets.precompile += %w( search.js )

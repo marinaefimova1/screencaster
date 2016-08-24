@@ -12,4 +12,15 @@
  *
  *= require_tree .
  *= require_self
+ *= require nprogress
+*= require nprogress-bootstrap
+*= require 'css3-progress-bar'
+
+$navbarBackground: #000;
+$navbarText: #fff;
+$navbarLinkColor: #888;
+$navbarBrandColor: #FFF;
+
+@import "bootstrap";
+@import "bootstrap-responsive";
  */

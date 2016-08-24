@@ -14,3 +14,7 @@
 //= require jquery_ujs
 //= require main
 //= require_tree .
+//= require nprogress
+//= require nprogress-turbolinks
+//= require bootstrap
+

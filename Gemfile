@@ -30,6 +30,11 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 gem 'streamio-ffmpeg'
 gem 'aws-sdk'
+gem 's3_direct_upload'
+gem 'nprogress-rails'
+gem 'css3-progress-bar-rails'
+
+gem 'curb'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

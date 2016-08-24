@@ -50,16 +50,16 @@ function handleError(error) {
 
 
 var mediaDevices = (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) ?
-                    navigator.mediaDevices : ((navigator.mozGetUserMedia || navigator.webkitGetUserMedia) ? {
-                        getUserMedia: function(c) {
-                            return new Promise(function(y, n) {
-                                (navigator.mozGetUserMedia ||
-                                navigator.webkitGetUserMedia).call(navigator, c, y, n);
-                            });
-                        }
-                    } : null);
+    navigator.mediaDevices : ((navigator.mozGetUserMedia || navigator.webkitGetUserMedia) ? {
+    getUserMedia: function (c) {
+        return new Promise(function (y, n) {
+            (navigator.mozGetUserMedia ||
+            navigator.webkitGetUserMedia).call(navigator, c, y, n);
+        });
+    }
+} : null);
 
-if(!mediaDevices) {
+if (!mediaDevices) {
     alert('Ne poluchitsia !!! : )');
 }
 
@@ -136,24 +136,60 @@ function stopRecording() {
     console.log('Recorded Blobs: ', recordedBlobs);
     recordedVideo.controls = true;
 }
-
+// function download22() {
+//
+//     var blob = new Blob(recordedBlobs, {type: 'video/webm'});
+//     var file_input = $('input[type=file]');
+//     file_input.value = blob;
+//
+//     console.log(file_input);
+//     // file = input.files[0];
+//     // fr = new FileReader();
+//     // fr.onload
+//     // var fd = new FormData();
+//     // fd.append('data', blob);
+//     // NProgress.start();
+//     // $.ajax({
+//     //         url: 'welcome/upload',
+//     //         method: 'POST',
+//     //         data: fd,
+//     //     })
+//     //     .done(function (data) {
+//     //         var container = document.getElementById('link');
+//     //         container.innerHTML = '<div><b><a href="' + window.location.origin + '/' + data.hash_url + '">Get your video by link ' + window.location.origin + '/' + data.hash_url + '</a></b></div>';
+//     //     });
+//
+// }
 function download() {
     var blob = new Blob(recordedBlobs, {type: 'video/webm'});
     var fd = new FormData();
     fd.append('data', blob);
+
     $.ajax({
         url: 'welcome/upload',
         method: 'POST',
         data: fd,
         processData: false,
         contentType: false
-    }).done(function (data) {
-        console.log(data);
+    })
+    .done(function (data) {
         var container = document.getElementById('link');
-        container.innerHTML = '<div><b><a href="' + window.location.origin + '/' + data.hash_url +'">Get your video by link ' + window.location.origin + '/' + data.hash_url + '</a></b></div>';
+        container.innerHTML = '<div><b><a href="' + window.location.origin + '/' + data.hash_url + '">Get your video by link ' + window.location.origin + '/' + data.hash_url + '</a></b></div>';
+
     });
 
 }
+
+// $(function () {
+//     $('#fileupload').fileupload({
+//         dataType: 'json',
+//         done: function (e, data) {
+//             $.each(data.result.files, function (index, file) {
+//                 $('<p/>').text(file.name).appendTo(document.body);
+//             });
+//         }
+//     });
+// });
 
 function toggleFullScreen() {
     if (!document.fullscreenElement && !document.msFullscreenElement && !document.mozFullScreenElement && !document.webkitFullscreenElement) {
