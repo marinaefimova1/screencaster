@@ -10,10 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160817110331) do
+ActiveRecord::Schema.define(version: 20160825124716) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "integrations", force: :cascade do |t|
+    t.string   "access_token"
+    t.string   "user_id"
+    t.string   "team_id"
+    t.string   "team_name"
+    t.string   "channel"
+    t.string   "channel_id"
+    t.string   "url"
+    t.string   "cofiguration_url"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
 
   create_table "links", force: :cascade do |t|
     t.string   "url"
