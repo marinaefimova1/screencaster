@@ -166,7 +166,7 @@ function download() {
     fd.append('data', blob);
 
     $.ajax({
-        url: 'welcome/upload',
+        url: 'upload',
         method: 'POST',
         data: fd,
         processData: false,
